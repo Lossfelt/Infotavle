@@ -67,7 +67,7 @@ class Rutetider extends React.Component {
   `;
 
     const data = await graphQLClient.request(query);
-    console.log(data);
+    //console.log(data);
     this.setState({ stoppestedet: data.stopPlace.name });
     this.setState({ estimatedCalls: data.stopPlace.estimatedCalls });
     this.linesMotByen = "";
@@ -94,8 +94,8 @@ class Rutetider extends React.Component {
     });
     this.setState({ linesMotByen: this.linesMotByen });
     this.setState({ linesFraByen: this.linesFraByen });
-    console.log(this.linesMotByen);
-    console.log(this.linesFraByen);
+    //console.log(this.linesMotByen);
+    //console.log(this.linesFraByen);
     //console.log(dateformat((this.lines[0].props.children[2]), "HH:MM"))
   };
 
