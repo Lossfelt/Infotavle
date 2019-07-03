@@ -1,2 +1,0 @@
-# Infotavle
-Created with CodeSandbox
