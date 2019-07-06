@@ -78,7 +78,7 @@ class Rutetider extends React.Component {
         item.quay.id === "NSR:Quay:10851"
       )
         return (this.linesMotByen +=
-          item.serviceJourney.journeyPattern.line.id +
+          item.serviceJourney.journeyPattern.line.id.replace("RUT:", "") +
           " = " +
           dateformat(item.expectedDepartureTime, "HH:MM") +
           "\n");
@@ -87,7 +87,7 @@ class Rutetider extends React.Component {
         item.quay.id === "NSR:Quay:10850"
       )
         return (this.linesFraByen +=
-          item.serviceJourney.journeyPattern.line.id +
+          item.serviceJourney.journeyPattern.line.id.replace("RUT:", "") +
           " = " +
           dateformat(item.expectedDepartureTime, "HH:MM") +
           "\n");
@@ -105,12 +105,12 @@ class Rutetider extends React.Component {
   render() {
     return (
       <div>
-        Manglerud
+        T-banen
         <div className="grid-container2">
           <div>Mot byen</div>
           <div>Fra byen</div>
-          <div>{this.state.linesMotByen}</div>
-          <div>{this.state.linesFraByen}</div>
+          <div className="pre">{this.state.linesMotByen}</div>
+          <div className="pre">{this.state.linesFraByen}</div>
         </div>
       </div>
     );

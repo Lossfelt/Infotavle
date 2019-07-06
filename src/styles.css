@@ -36,3 +36,7 @@ img {
   background: gray;
   text-align: center;
 }
+
+.pre {
+  white-space: pre;
+}
