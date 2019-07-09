@@ -16,6 +16,7 @@ img {
   padding: 1px;
   width: 100%;
   margin: 0 auto;
+  max-width: 900px;
 }
 
 .grid-container > div {
