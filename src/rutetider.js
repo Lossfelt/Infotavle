@@ -109,6 +109,7 @@ class Rutetider extends React.Component {
         <div className="grid-container2">
           <div>Mot byen</div>
           <div>Fra byen</div>
+          <div>Avvik</div>
           <div className="pre">{this.state.linesMotByen}</div>
           <div className="pre">{this.state.linesFraByen}</div>
         </div>
