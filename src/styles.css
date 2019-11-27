@@ -39,6 +39,10 @@ img {
   border-radius: 10px;
 }
 
-.pre {
-  white-space: pre;
+.redtext {
+  color: red;
+}
+
+.strikethrough {
+  text-decoration: line-through;
 }

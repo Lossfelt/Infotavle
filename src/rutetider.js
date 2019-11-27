@@ -1,14 +1,14 @@
 import React from "react";
 import { GraphQLClient } from "graphql-request";
-import dateformat from "dateformat";
+import { behandleRutetider } from "./funcRutetider";
+import PresenterAvganger from "./PresenterAvganger";
 
 class Rutetider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stoppestedet: "rutetider lastes ned",
-      estimatedCalls: {},
-      lines: []
+      motByen: "",
+      fraByen: ""
     };
   }
 
@@ -67,33 +67,11 @@ class Rutetider extends React.Component {
   `;
 
     const data = await graphQLClient.request(query);
+    var dataDeltITo = behandleRutetider(data.stopPlace.estimatedCalls);
+
+    this.setState({ motByen: dataDeltITo[1] });
+    this.setState({ fraByen: dataDeltITo[0] });
     //console.log(data);
-    this.setState({ stoppestedet: data.stopPlace.name });
-    this.setState({ estimatedCalls: data.stopPlace.estimatedCalls });
-    this.linesMotByen = "";
-    this.linesFraByen = "";
-    this.state.estimatedCalls.map(item => {
-      if (
-        item.serviceJourney.journeyPattern.line.transportMode === "metro" &&
-        item.quay.id === "NSR:Quay:10851"
-      )
-        return (this.linesMotByen +=
-          item.serviceJourney.journeyPattern.line.id.replace("RUT:", "") +
-          " = " +
-          dateformat(item.expectedDepartureTime, "HH:MM") +
-          "\n");
-      else if (
-        item.serviceJourney.journeyPattern.line.transportMode === "metro" &&
-        item.quay.id === "NSR:Quay:10850"
-      )
-        return (this.linesFraByen +=
-          item.serviceJourney.journeyPattern.line.id.replace("RUT:", "") +
-          " = " +
-          dateformat(item.expectedDepartureTime, "HH:MM") +
-          "\n");
-    });
-    this.setState({ linesMotByen: this.linesMotByen });
-    this.setState({ linesFraByen: this.linesFraByen });
     //console.log(this.linesMotByen);
     //console.log(this.linesFraByen);
     //console.log(dateformat((this.lines[0].props.children[2]), "HH:MM"))
@@ -110,9 +88,13 @@ class Rutetider extends React.Component {
           <div>Mot byen</div>
           <div>Fra byen</div>
           <div>Avvik</div>
-          <div className="pre">{this.state.linesMotByen}</div>
-          <div className="pre">{this.state.linesFraByen}</div>
-          <div>*under arbeid*</div>
+          <div>
+            <PresenterAvganger avganger={this.state.motByen} />
+          </div>
+          <div>
+            <PresenterAvganger avganger={this.state.fraByen} />
+          </div>
+          <div>under arbeid</div>
         </div>
       </div>
     );
