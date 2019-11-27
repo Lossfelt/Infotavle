@@ -112,6 +112,7 @@ class Rutetider extends React.Component {
           <div>Avvik</div>
           <div className="pre">{this.state.linesMotByen}</div>
           <div className="pre">{this.state.linesFraByen}</div>
+          <div>*under arbeid*</div>
         </div>
       </div>
     );
