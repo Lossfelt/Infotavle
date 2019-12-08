@@ -1,19 +1,31 @@
 export function handleSituations(motByen, fraByen) {
   var situations = [];
+  var prosesserteSituasjoner = [];
+  var motOgFra = [motByen, fraByen];
 
-  motByen.forEach(element => {
-    if (element.Avvik) {
-      element.Avvik.forEach(problem => {
-        situations.push(problem.situationNumber);
-      });
-    }
-  });
-  fraByen.forEach(element => {
-    if (element.Avvik) {
-      element.Avvik.forEach(problem => {
-        situations.push(problem.situationNumber);
-      });
-    }
+  motOgFra.forEach(vei => {
+    vei.forEach(element => {
+      if (element.Avvik) {
+        element.Avvik.forEach(problem => {
+          if (!prosesserteSituasjoner.includes(problem.situationNumber)) {
+            prosesserteSituasjoner.push(problem.situationNumber);
+            if (problem.summary.length) {
+              problem.summary.forEach(summary => {
+                if (summary.language === "no") {
+                  situations.push("summary: ", summary.value);
+                }
+              });
+            } else if (problem.description.length) {
+              problem.description.forEach(description => {
+                if (description.language === "no") {
+                  situations.push("description: ", description.value);
+                }
+              });
+            }
+          }
+        });
+      }
+    });
   });
 
   //console.log(motByen);
