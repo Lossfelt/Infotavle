@@ -8,6 +8,7 @@ export function behandleRutetider(data) {
     var avgang = "";
     var forsinket = false;
     var kansellert = false;
+    var avvik = "";
     if (element.serviceJourney.journeyPattern.line.transportMode === "metro") {
       avgang =
         element.serviceJourney.journeyPattern.line.id.replace("RUT:", "") +
@@ -22,19 +23,24 @@ export function behandleRutetider(data) {
       if (element.cancellation) {
         kansellert = true;
       }
+      if (element.situations.length) {
+        avvik = element.situations;
+      }
     }
     if (element.quay.id === "NSR:Quay:10851") {
       linjerMotByen.push({
         Avgang: avgang,
         Forsinket: forsinket,
-        Kansellert: kansellert
+        Kansellert: kansellert,
+        Avvik: avvik
       });
     }
     if (element.quay.id === "NSR:Quay:10850") {
       linjerFraByen.push({
         Avgang: avgang,
         Forsinket: forsinket,
-        Kansellert: kansellert
+        Kansellert: kansellert,
+        Avvik: avvik
       });
     }
   });

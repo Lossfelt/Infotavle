@@ -8,11 +8,11 @@ class PresenterAvganger extends React.Component {
 
     avganger.forEach(element => {
       if (element.Kansellert) {
-        liste.push(<div className="strikethrough">{element.Avgang}</div>);
+        liste.push(<div key={element.Avgang} className="strikethrough">{element.Avgang}</div>);
       } else if (element.Forsinket) {
-        liste.push(<div className="redtext">{element.Avgang}</div>);
+        liste.push(<div key={element.Avgang} className="redtext">{element.Avgang}</div>);
       } else {
-        liste.push(<div>{element.Avgang}</div>);
+        liste.push(<div key={element.Avgang} >{element.Avgang}</div>);
       }
     });
 
