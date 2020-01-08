@@ -12,7 +12,7 @@ export function handleSituations(motByen, fraByen) {
             if (problem.summary.length) {
               problem.summary.forEach(summary => {
                 if (summary.language === "no") {
-                  situations.push("summary: ", summary.value);
+                  situations.push(summary.value);
                 }
               });
             } else if (problem.description.length) {
