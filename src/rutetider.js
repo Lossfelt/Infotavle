@@ -38,16 +38,16 @@ class Rutetider extends React.Component {
   };
 
   componentDidMount() {
-    this.main().catch(error => console.error(error));
+    this.main().catch((error) => console.error(error));
   }
 
   render() {
     return (
       <div>
-        T-banen
+        Busstider
         <div className="grid-container2">
-          <div>Mot byen</div>
-          <div>Fra byen</div>
+          <div>70 Nationalth.</div>
+          <div>78A Østensjø R.</div>
           <div>Avvik</div>
           <div>
             <PresenterAvganger avganger={this.state.motByen} />

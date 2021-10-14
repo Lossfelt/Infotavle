@@ -4,16 +4,17 @@ export function behandleRutetider(data) {
   var linjerMotByen = [];
   var linjerFraByen = [];
 
-  data.forEach(element => {
-    var avgang = "";
+  data.forEach((element) => {
+    var avgang = [];
     var forsinket = false;
     var kansellert = false;
     var avvik = "";
-    if (element.serviceJourney.journeyPattern.line.transportMode === "metro") {
-      avgang =
-        element.serviceJourney.journeyPattern.line.id.replace("RUT:", "") +
-        " = " +
-        dateformat(element.expectedDepartureTime, "HH:MM");
+    if (element.serviceJourney.journeyPattern.line.transportMode === "bus") {
+      avgang.push(
+        dateformat(element.aimedDepartureTime, "HH:MM"),
+        dateformat(element.expectedDepartureTime, "HH:MM")
+      );
+      //avgang = dateformat(element.expectedDepartureTime, "HH:MM");
       if (
         dateformat(element.expectedDepartureTime, "HH:MM") !==
         dateformat(element.aimedDepartureTime, "HH:MM")
@@ -27,7 +28,10 @@ export function behandleRutetider(data) {
         avvik = element.situations;
       }
     }
-    if (element.quay.id === "NSR:Quay:10851") {
+    if (
+      element.quay.id === "NSR:Quay:10920" &&
+      element.serviceJourney.journeyPattern.line.id === "RUT:Line:70"
+    ) {
       linjerMotByen.push({
         Avgang: avgang,
         Forsinket: forsinket,
@@ -35,7 +39,10 @@ export function behandleRutetider(data) {
         Avvik: avvik
       });
     }
-    if (element.quay.id === "NSR:Quay:10850") {
+    if (
+      element.quay.id === "NSR:Quay:10920" &&
+      element.serviceJourney.journeyPattern.line.id === "RUT:Line:78"
+    ) {
       linjerFraByen.push({
         Avgang: avgang,
         Forsinket: forsinket,

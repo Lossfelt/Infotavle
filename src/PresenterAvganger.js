@@ -7,21 +7,21 @@ class PresenterAvganger extends React.Component {
     var liste = [];
     var keyInt = 1;
 
-    avganger.forEach(element => {
+    avganger.forEach((element) => {
       if (element.Kansellert) {
         liste.push(
-          <div key={keyInt} className="strikethrough">
-            {element.Avgang}
+          <div key={keyInt}>
+            <del>{element.Avgang[0]}</del>
           </div>
         );
       } else if (element.Forsinket) {
         liste.push(
           <div key={keyInt} className="redtext">
-            {element.Avgang}
+            <del>{element.Avgang[0]}</del> {element.Avgang[1]}
           </div>
         );
       } else {
-        liste.push(<div key={keyInt}>{element.Avgang}</div>);
+        liste.push(<div key={keyInt}>{element.Avgang[0]}</div>);
       }
       keyInt += 1;
     });

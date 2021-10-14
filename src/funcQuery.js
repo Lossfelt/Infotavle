@@ -1,44 +1,49 @@
 export function definerQuery() {
   return `
   {
-stopPlace(id: "NSR:StopPlace:58249") {
-  id
-  name
-  estimatedCalls(timeRange: 3600, numberOfDepartures: 20) {     
-    realtime
-    aimedDepartureTime
-    expectedDepartureTime
-    actualDepartureTime
-    cancellation
-    situations {
-      situationNumber
-      description {
-        value
-        language
-      }
-      summary {
-        value
-        language
-      }
-    }
-    date
-    destinationDisplay {
-      frontText
-    }
-    quay {
+    stopPlace(
+      id: "NSR:StopPlace:5953"
+    ) {
       id
-    }
-    serviceJourney {
-      journeyPattern {
-        line {
+      name
+      estimatedCalls(
+        timeRange: 72100,
+        numberOfDepartures: 20
+      ) {
+        realtime
+        aimedDepartureTime
+        expectedDepartureTime
+        actualDepartureTime
+        cancellation
+        situations {
+          situationNumber
+          description {
+            value
+            language
+          }
+          summary {
+            value
+            language
+          }
+        }
+        date
+        destinationDisplay {
+          frontText
+        }
+        quay {
           id
-          name
-          transportMode
+        }
+        serviceJourney {
+          journeyPattern {
+            line {
+              id
+              name
+              transportMode
+            }
+          }
         }
       }
     }
-  }
-}
 }
 `;
 }
