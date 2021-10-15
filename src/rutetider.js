@@ -46,16 +46,16 @@ class Rutetider extends React.Component {
       <div className="red-background">
         Ruter #
         <div className="grid-container2">
-          <div>70 Nationalth.</div>
-          <div>78A Østensjø R.</div>
-          <div>Avvik</div>
+          <div className="liten_skrift">70 Nationaltheatret</div>
+          <div className="liten_skrift">78A Østensjø Ring</div>
+          <div className="liten_skrift">Avvik</div>
           <div>
             <PresenterAvganger avganger={this.state.motByen} />
           </div>
           <div>
             <PresenterAvganger avganger={this.state.fraByen} />
           </div>
-          <div>{this.state.situations}</div>
+          <div className="liten_skrift">{this.state.situations}</div>
         </div>
       </div>
     );

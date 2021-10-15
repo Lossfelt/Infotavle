@@ -12,7 +12,6 @@ img {
   display: grid;
   grid-template-columns: auto;
   grid-gap: 1px;
-  padding: 1px;
   width: 100%;
   margin: 0 auto;
 }
@@ -22,6 +21,11 @@ img {
   color: white;
   font-weight: bold;
   font-size: 3vw;
+}
+
+div.liten_skrift {
+  font-size: 1.8vw;
+  line-height: 2;
 }
 
 .grid-container > div > button {
