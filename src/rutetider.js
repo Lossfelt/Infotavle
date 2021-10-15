@@ -27,7 +27,7 @@ class Rutetider extends React.Component {
     const query = definerQuery();
 
     const data = await graphQLClient.request(query);
-    var dataDeltITo = behandleRutetider(data.stopPlace.estimatedCalls);
+    var dataDeltITo = behandleRutetider(data.quay.estimatedCalls);
 
     this.setState({ motByen: dataDeltITo[1] });
     this.setState({ fraByen: dataDeltITo[0] });
