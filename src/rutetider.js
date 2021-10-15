@@ -43,8 +43,8 @@ class Rutetider extends React.Component {
 
   render() {
     return (
-      <div>
-        Busstider
+      <div className="red-background">
+        Ruter #
         <div className="grid-container2">
           <div>70 Nationalth.</div>
           <div>78A Østensjø R.</div>
