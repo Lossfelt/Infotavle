@@ -13,7 +13,7 @@ function Main() {
           <button onClick={buttonRefreshPage}>
             <img
               alt="Meteogram for Oslo"
-              src="https://www.yr.no/sted/Norge/Oslo/Oslo/Oslo//meteogram.png"
+              src="https://www.yr.no/nb/innhold/1-72837/meteogram.svg"
             />
           </button>
         </div>
