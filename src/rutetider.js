@@ -44,7 +44,7 @@ class Rutetider extends React.Component {
 
   render() {
     return (
-      <div className="red-background">
+      <div className="black-background">
         <Clock />
         <div className="grid-container2">
           <div className="liten_skrift">70 Nationaltheatret</div>

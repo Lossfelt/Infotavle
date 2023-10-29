@@ -56,6 +56,6 @@ div.liten_skrift {
   color: red;
 }
 
-.red-background {
-  background: red;
+.black-background {
+  background: rgb(130, 170, 121);
 }
