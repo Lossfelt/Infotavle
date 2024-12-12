@@ -17,7 +17,7 @@ class Rutetider extends React.Component {
   }
 
   main = async () => {
-    const endpoint = "https://api.entur.io/journey-planner/v2/graphql";
+    const endpoint = "https://api.entur.io/journey-planner/v3/graphql";
 
     const graphQLClient = new GraphQLClient(endpoint, {
       headers: {
