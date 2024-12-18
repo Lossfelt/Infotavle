@@ -8,7 +8,7 @@ export function definerQuery() {
         timeRange: 72100,
         numberOfDepartures: 10
         numberOfDeparturesPerLineAndDestinationDisplay: 5
-        whiteListed: {lines: ["RUT:Line:70", "RUT:Line:78"]}
+        whiteListed: {lines: ["RUT:Line:70", "RUT:Line:3969", "RUT:Line:78"]}
       ) {
         realtime
         aimedDepartureTime
