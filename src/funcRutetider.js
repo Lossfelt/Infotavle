@@ -50,6 +50,18 @@ export function behandleRutetider(data) {
         Avvik: avvik
       });
     }
+    if (
+      element.quay.id === "NSR:Quay:10920" &&
+      element.serviceJourney.journeyPattern.line.id === "RUT:Line:3969"
+    ) {
+      avgang = avgang.map((dep) => "E" + dep);
+      linjerMotByen.push({
+        Avgang: avgang,
+        Forsinket: forsinket,
+        Kansellert: kansellert,
+        Avvik: avvik,
+      });
+    }
   });
   var begge = [linjerFraByen, linjerMotByen];
   //console.log(linjerMotByen);
