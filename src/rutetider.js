@@ -5,6 +5,7 @@ import PresenterAvganger from "./PresenterAvganger";
 import { handleSituations } from "./funcHandleSituations";
 import { definerQuery } from "./funcQuery.js";
 import Clock from "./clock";
+import Strompriser from "./funcStrompriser.js";
 
 class Rutetider extends React.Component {
   constructor(props) {
@@ -47,9 +48,10 @@ class Rutetider extends React.Component {
       <div className="black-background">
         <Clock />
         <div className="grid-container2">
-          <div className="liten_skrift">70 Nationaltheatret</div>
-          <div className="liten_skrift">78A Østensjø Ring</div>
+          <div className="liten_skrift">70/70E National</div>
+          <div className="liten_skrift">78A Østensjø R.</div>
           <div className="liten_skrift">Avvik</div>
+          <div className="liten_skrift">Strømpriser</div>
           <div>
             <PresenterAvganger avganger={this.state.motByen} />
           </div>
@@ -57,6 +59,9 @@ class Rutetider extends React.Component {
             <PresenterAvganger avganger={this.state.fraByen} />
           </div>
           <div className="liten_skrift">{this.state.situations}</div>
+          <div className="liten_skrift">
+            <Strompriser />
+          </div>
         </div>
       </div>
     );

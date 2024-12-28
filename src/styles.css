@@ -40,7 +40,7 @@ div.liten_skrift {
 
 .grid-container2 {
   display: grid;
-  grid-template-columns: 25% 25% auto;
+  grid-template-columns: 15% 15% 20% auto;
   background: white;
   grid-gap: 1px;
   padding: 1px;
