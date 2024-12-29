@@ -51,7 +51,9 @@ class Rutetider extends React.Component {
           <div className="liten_skrift">70/70E National</div>
           <div className="liten_skrift">78A Østensjø R.</div>
           <div className="liten_skrift">Avvik</div>
-          <div className="liten_skrift">Strømpriser</div>
+          <div className="grid-item-last">
+            <Strompriser />
+          </div>
           <div>
             <PresenterAvganger avganger={this.state.motByen} />
           </div>
@@ -59,9 +61,6 @@ class Rutetider extends React.Component {
             <PresenterAvganger avganger={this.state.fraByen} />
           </div>
           <div className="liten_skrift">{this.state.situations}</div>
-          <div className="liten_skrift">
-            <Strompriser />
-          </div>
         </div>
       </div>
     );

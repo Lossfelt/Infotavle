@@ -1,7 +1,16 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import "chartjs-plugin-annotation"; // Importer plugin for å legge til annotasjoner
 
 const StrompriserDiagram = ({ apiData }) => {
+  const firstDate = apiData[0]
+  ? new Date(apiData[0].time_start).toLocaleDateString("no-NO", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : "Ukjent dato";
+
   const labels = apiData.map((entry) =>
     new Date(entry.time_start).toLocaleTimeString("no-NO", {
       hour: "2-digit",
@@ -9,6 +18,11 @@ const StrompriserDiagram = ({ apiData }) => {
     })
   );
   const prices = apiData.map((entry) => entry.NOK_per_kWh);
+
+  // Beregn nåværende tid for vertikal linje
+  const now = new Date();
+  const nowHour = now.getHours(); // Henter nåværende time
+  const nowLabel = `${String(nowHour).padStart(2, "0")}:00`; // Formatter som "hh:00"
 
   // Dynamisk fargelegging basert på pris
   const pointColors = prices.map((price) => {
@@ -42,6 +56,17 @@ const StrompriserDiagram = ({ apiData }) => {
     legend: {
       display: false, // Skjuler legend
     },
+    title: {
+      display: true,
+      text: `Strømpriser for: ${firstDate}`,
+      align: "end", // Plasser teksten nederst til høyre
+      font: {
+        size: 12,
+        family: "Arial",
+        weight: "normal",
+      },
+      color: "gray",
+    },
     scales: {
       xAxes: [
         {
@@ -51,6 +76,21 @@ const StrompriserDiagram = ({ apiData }) => {
       yAxes: [
         {
           display: true, // Holder y-aksen synlig
+          ticks: {
+            fontColor: "rgba(255, 255, 255, 0.8)", // Hvit farge på tallene
+          },
+        },
+      ],
+    },
+    annotation: {
+      annotations: [
+        {
+          type: "line",
+          mode: "vertical",
+          scaleID: "x-axis-0", // Må matche ID-en til x-aksen
+          value: nowLabel, // Tidspunktet du vil markere
+          borderColor: "rgba(255, 0, 0, 0.8)", // Rød linje
+          borderWidth: 2, // Tykkelse på linjen
         },
       ],
     },
