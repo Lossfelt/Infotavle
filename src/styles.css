@@ -3,17 +3,23 @@
   text-align: center;
 }
 
+.weather {
+  height: 100%;
+  overflow: hidden;
+}
+
 img {
   display: block;
   width: 100%;
   height: auto;
   position: absolute;
-  bottom: 0;
+  bottom: 40px;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: auto;
+  grid-template-rows: 400px auto;
   grid-gap: 1px;
   width: 100%;
   margin: 0 auto;
@@ -31,6 +37,11 @@ div.liten_skrift {
   line-height: 2;
 }
 
+div.skrift_for_avvik {
+  font-size: 1vw;
+  line-height: 2;
+}
+
 .grid-container > div > button {
   width: 100%;
   overflow: hidden;
@@ -41,7 +52,6 @@ div.liten_skrift {
 .grid-container2 {
   display: grid;
   grid-template-columns: 15% 15% 20% auto;
-  grid-template-rows: auto auto; /* To rader */
   background: white;
   grid-gap: 1px;
   padding: 1px;
