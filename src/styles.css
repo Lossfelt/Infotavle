@@ -38,8 +38,9 @@ div.liten_skrift {
 }
 
 div.skrift_for_avvik {
-  font-size: 1vw;
+  font-size: 1.2vw;
   line-height: 2;
+  white-space: pre-line;
 }
 
 .grid-container > div > button {

@@ -11,14 +11,14 @@ export function handleSituations(motByen, fraByen) {
             prosesserteSituasjoner.push(problem.situationNumber);
             if (problem.summary.length) {
               problem.summary.forEach(summary => {
-                if (summary.language === "no") {
+                if (summary.language === "no" && !situations.includes(summary.value)) {
                   situations.push(summary.value);
                 }
               });
             } else if (problem.description.length) {
               problem.description.forEach(description => {
-                if (description.language === "no") {
-                  situations.push("description: ", description.value);
+                if (description.language === "no" && !situations.includes(description.value)) {
+                  situations.push("description: " + description.value);
                 }
               });
             }
@@ -32,7 +32,7 @@ export function handleSituations(motByen, fraByen) {
   //console.log(fraByen);
 
   if (situations.length) {
-    return situations;
+    return situations.join('\n');
   } else {
     return "Ingen større avvik";
   }
