@@ -85,7 +85,7 @@ const Rutetider = () => {
              <PresenterAvganger avganger={fraByen} />
           </div>
 
-          <div className="bg-zinc-800 p-2 rounded text-left overflow-auto text-sm text-red-200 whitespace-pre-line font-medium">
+          <div className="bg-zinc-800 p-2 rounded text-center overflow-auto text-sm text-red-200 whitespace-pre-line font-medium">
              {situations}
           </div>
        </div>

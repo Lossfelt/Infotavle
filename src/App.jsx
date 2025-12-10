@@ -16,7 +16,7 @@ function App() {
               <img 
                 src={config.urls.yrMeteogram} 
                 alt="Meteogram" 
-                className="absolute -bottom-5 w-full h-[72vh] left-0 right-0"
+                className="absolute -bottom-3 w-full h-[72vh] left-0 right-0"
               />
            </button>
         </div>
