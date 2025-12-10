@@ -1,16 +1,47 @@
-# React + Vite
+# Infotavle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En React-basert informasjonstavle optimalisert for nettbrett i landskapsmodus. Tavlen viser sanntidsinformasjon nyttig for hverdagen.
 
-Currently, two official plugins are available:
+## Funksjonalitet
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Rutetider:** Sanntidsoppdateringer for busser fra Entur API (Ruter). Viser avganger mot sentrum og mot Østensjø.
+    *   Håndterer forsinkelser, kanselleringer og avviksmeldinger.
+*   **Vær:** Meteogram fra Yr.no som viser værvarsel for de neste timene.
+*   **Strømpriser:** Dagens strømpriser (time for time) fra Hva Koster Strømmen API, vist som en graf med fargekoding (billig/dyr).
+*   **Klokke:** Stor og tydelig klokke.
 
-## React Compiler
+## Teknologier
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   [Vite](https://vitejs.dev/) - Byggverktøy og dev-server.
+*   [React](https://reactjs.org/) - Frontend rammeverk.
+*   [Tailwind CSS](https://tailwindcss.com/) - Styling.
+*   [TanStack Query (React Query)](https://tanstack.com/query/latest) - Datahenting og caching.
+*   [Chart.js](https://www.chartjs.org/) & [react-chartjs-2](https://react-chartjs-2.js.org/) - Graf for strømpriser.
+*   [Entur API](https://developer.entur.org/) - Kollektivdata.
 
-## Expanding the ESLint configuration
+## Oppsett og Kjøring
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  **Installer avhengigheter:**
+    ```bash
+    npm install
+    ```
+
+2.  **Start utviklingsserver:**
+    ```bash
+    npm run dev
+    ```
+
+3.  **Bygg for produksjon:**
+    ```bash
+    npm run build
+    ```
+
+## Konfigurasjon
+
+Nøkkelverdier som stoppested (Quay ID), linjenummer og API-URLer kan endres i `src/config.js`.
+
+## Deployment
+
+Prosjektet er satt opp for automatisk deployment til **Netlify**.
+*   `netlify.toml` styrer bygginnstillingene (`npm run build`, output til `dist`).
+*   `.nvmrc` sikrer at Netlify bruker Node versjon 20.
