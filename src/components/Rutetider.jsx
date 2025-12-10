@@ -7,6 +7,7 @@ import { definerQuery } from "../utils/funcQuery";
 import { behandleRutetider } from "../utils/funcRutetider";
 import { handleSituations } from "../utils/funcHandleSituations";
 import config from "../config";
+import { Loader2 } from "lucide-react";
 
 const fetchRutetider = async () => {
   const { enturGraphQl, clientName } = config.api;
@@ -18,15 +19,23 @@ const fetchRutetider = async () => {
 };
 
 const Rutetider = () => {
-  const { data, error } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["rutetider"],
     queryFn: fetchRutetider,
     refetchInterval: 60000,
   });
 
-  const processedData = data ? behandleRutetider(data.quay.estimatedCalls) : [[], []];
-  const [fraByen, motByen] = processedData; // behandleRutetider returns [fra, mot]
-  const situations = data ? handleSituations(motByen, fraByen) : "";
+  // Default empty state
+  let fraByen = [];
+  let motByen = [];
+  let situations = "";
+
+  if (data) {
+    const processed = behandleRutetider(data.quay.estimatedCalls);
+    fraByen = processed.fraByen;
+    motByen = processed.motByen;
+    situations = handleSituations(motByen, fraByen);
+  }
 
   return (
     <div className="bg-zinc-900 h-full w-full flex flex-col p-2 text-white">
@@ -51,13 +60,31 @@ const Rutetider = () => {
              <Strompriser />
           </div>
 
-          {/* Content */}
-          <div className="bg-zinc-800 p-2 rounded text-center flex flex-col justify-start overflow-hidden">
+          {/* Content Columns */}
+          <div className="bg-zinc-800 p-2 rounded text-center flex flex-col justify-start overflow-hidden relative">
+             {isLoading && !data && (
+                <div className="absolute inset-0 flex items-center justify-center bg-zinc-800/80">
+                  <Loader2 className="animate-spin w-8 h-8 text-white" />
+                </div>
+             )}
+             {error && (
+                <div className="text-red-400 font-bold p-2">Feil ved henting</div>
+             )}
              <PresenterAvganger avganger={motByen} />
           </div>
-          <div className="bg-zinc-800 p-2 rounded text-center flex flex-col justify-start overflow-hidden">
+          
+          <div className="bg-zinc-800 p-2 rounded text-center flex flex-col justify-start overflow-hidden relative">
+             {isLoading && !data && (
+                <div className="absolute inset-0 flex items-center justify-center bg-zinc-800/80">
+                  <Loader2 className="animate-spin w-8 h-8 text-white" />
+                </div>
+             )}
+             {error && (
+                <div className="text-red-400 font-bold p-2">Feil ved henting</div>
+             )}
              <PresenterAvganger avganger={fraByen} />
           </div>
+
           <div className="bg-zinc-800 p-2 rounded text-left overflow-auto text-sm text-red-200 whitespace-pre-line font-medium">
              {situations}
           </div>

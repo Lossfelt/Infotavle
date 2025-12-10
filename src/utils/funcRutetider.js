@@ -2,69 +2,49 @@ import dateformat from "dateformat";
 import config from "../config";
 
 export function behandleRutetider(data) {
-  var linjerMotByen = [];
-  var linjerFraByen = [];
+  const motByen = [];
+  const fraByen = [];
 
   const { quayId, lines } = config.ruter;
 
   data.forEach((element) => {
-    var avgang = [];
-    var forsinket = false;
-    var kansellert = false;
-    var avvik = "";
-    if (element.serviceJourney.journeyPattern.line.transportMode === "bus") {
-      avgang.push(
-        dateformat(element.aimedDepartureTime, "HH:MM"),
-        dateformat(element.expectedDepartureTime, "HH:MM")
-      );
-      
-      if (
-        dateformat(element.expectedDepartureTime, "HH:MM") !==
-        dateformat(element.aimedDepartureTime, "HH:MM")
-      ) {
-        forsinket = true;
-      }
-      if (element.cancellation) {
-        kansellert = true;
-      }
-      if (element.situations.length) {
-        avvik = element.situations;
-      }
+    // Only process buses
+    if (element.serviceJourney.journeyPattern.line.transportMode !== "bus") {
+      return;
     }
-    if (
-      element.quay.id === quayId &&
-      element.serviceJourney.journeyPattern.line.id === lines.line70
-    ) {
-      linjerMotByen.push({
-        Avgang: avgang,
-        Forsinket: forsinket,
-        Kansellert: kansellert,
-        Avvik: avvik
-      });
-    }
-    if (
-      element.quay.id === quayId &&
-      element.serviceJourney.journeyPattern.line.id === lines.line78
-    ) {
-      linjerFraByen.push({
-        Avgang: avgang,
-        Forsinket: forsinket,
-        Kansellert: kansellert,
-        Avvik: avvik
-      });
-    }
-    if (
-      element.quay.id === quayId &&
-      element.serviceJourney.journeyPattern.line.id === lines.line3969
-    ) {
-      avgang = avgang.map((dep) => "E" + dep);
-      linjerMotByen.push({
-        Avgang: avgang,
-        Forsinket: forsinket,
-        Kansellert: kansellert,
-        Avvik: avvik,
-      });
+
+    const aimedTime = dateformat(element.aimedDepartureTime, "HH:MM");
+    const expectedTime = dateformat(element.expectedDepartureTime, "HH:MM");
+    
+    // Check if line 3969 (prefix E)
+    const isLine3969 = element.serviceJourney.journeyPattern.line.id === lines.line3969;
+    
+    const avgang = isLine3969 
+      ? [`E${aimedTime}`, `E${expectedTime}`]
+      : [aimedTime, expectedTime];
+
+    const forsinket = expectedTime !== aimedTime;
+    const kansellert = !!element.cancellation;
+    const avvik = element.situations.length > 0 ? element.situations : [];
+
+    const departureObj = {
+      avgang,
+      forsinket,
+      kansellert,
+      avvik,
+      lineId: element.serviceJourney.journeyPattern.line.id
+    };
+
+    // Filter by Quay ID (though query already filters, good for safety)
+    if (element.quay.id !== quayId) return;
+
+    // Grouping logic
+    if (element.serviceJourney.journeyPattern.line.id === lines.line70 || isLine3969) {
+      motByen.push(departureObj);
+    } else if (element.serviceJourney.journeyPattern.line.id === lines.line78) {
+      fraByen.push(departureObj);
     }
   });
-  return [linjerFraByen, linjerMotByen];
+
+  return { fraByen, motByen };
 }

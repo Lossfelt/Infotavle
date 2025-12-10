@@ -1,7 +1,9 @@
 import config from "../config";
 
 export function definerQuery() {
-  const { quayId, lines } = config.ruter;
+  const { quayId, lines, query } = config.ruter;
+  const { timeRange, numberOfDepartures, numberOfDeparturesPerLineAndDestinationDisplay } = query;
+  
   // Convert lines object values to an array of strings for the query
   const lineIds = Object.values(lines).map(id => `"${id}"`).join(", ");
 
@@ -11,9 +13,9 @@ export function definerQuery() {
       id
       name
       estimatedCalls(
-        timeRange: 72100,
-        numberOfDepartures: 10
-        numberOfDeparturesPerLineAndDestinationDisplay: 5
+        timeRange: ${timeRange},
+        numberOfDepartures: ${numberOfDepartures}
+        numberOfDeparturesPerLineAndDestinationDisplay: ${numberOfDeparturesPerLineAndDestinationDisplay}
         whiteListed: {lines: [${lineIds}]}
       ) {
         realtime

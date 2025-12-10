@@ -7,7 +7,10 @@ const fetchStrompriser = async () => {
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, '0');
   const day = String(today.getDate()).padStart(2, '0');
-  const url = `${config.urls.stromprisApi}/${year}/${month}-${day}_NO1.json`;
+  const zone = config.strom.zone;
+  
+  const url = `${config.urls.stromprisApi}/${year}/${month}-${day}_${zone}.json`;
+  
   const response = await fetch(url);
   if (!response.ok) throw new Error('Failed to fetch prices');
   return response.json();
@@ -20,8 +23,8 @@ const Strompriser = () => {
     refetchInterval: 1000 * 60 * 60, // 1 hour
   });
 
-  if (isLoading) return <div className="text-white">Laster strømpriser...</div>;
-  if (error) return <div className="text-red-500">Feil ved henting av data</div>;
+  if (isLoading) return <div className="text-white text-center p-4">Laster strømpriser...</div>;
+  if (error) return <div className="text-red-400 text-center p-4 font-bold">Kunne ikke hente strømpriser</div>;
 
   return (
     <div className="w-full h-full">
