@@ -10,7 +10,7 @@ const Clock = () => {
     return () => clearInterval(timer);
   }, []);
 
-  return <div className="text-6xl font-bold text-white mb-4">{time.toLocaleTimeString("no-NO")}</div>;
+  return <div className="text-6xl font-bold text-white mb-2">{time.toLocaleTimeString("no-NO")}</div>;
 };
 
 export default Clock;
