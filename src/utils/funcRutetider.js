@@ -46,5 +46,8 @@ export function behandleRutetider(data) {
     }
   });
 
-  return { fraByen, motByen };
+  return {
+    fraByen: fraByen.slice(0, 5),
+    motByen: motByen.slice(0, 5)
+  };
 }
