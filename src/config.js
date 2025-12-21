@@ -22,6 +22,10 @@ const config = {
     },
     strom: {
         zone: "NO1",
+    },
+    refetchIntervals: {
+        rutetider: 60 * 1000 * 5, // 5 minutter
+        strompriser: 1000 * 60 * 60, // 1 time
     }
 };
 

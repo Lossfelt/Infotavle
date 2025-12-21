@@ -20,7 +20,7 @@ const Strompriser = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['strompriser'],
     queryFn: fetchStrompriser,
-    refetchInterval: 1000 * 60 * 60, // 1 hour
+    refetchInterval: config.refetchIntervals.strompriser,
   });
 
   if (isLoading) return <div className="text-white text-center p-4">Laster strømpriser...</div>;

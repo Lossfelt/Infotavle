@@ -22,7 +22,7 @@ const Rutetider = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["rutetider"],
     queryFn: fetchRutetider,
-    refetchInterval: 60 * 1000 * 5, //5 minutter
+    refetchInterval: config.refetchIntervals.rutetider,
   });
 
   // Default empty state
