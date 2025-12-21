@@ -26,6 +26,7 @@ const config = {
     refetchIntervals: {
         rutetider: 60 * 1000 * 5, // 5 minutter
         strompriser: 1000 * 60 * 60, // 1 time
+        meteogram: 1000 * 60 * 60, // 1 time
     }
 };
 
