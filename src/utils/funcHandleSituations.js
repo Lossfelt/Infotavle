@@ -1,17 +1,13 @@
-export function handleSituations(motByen, fraByen) {
+export function handleSituations(departureGroups) {
   const situations = new Set();
   const processedSituationNumbers = new Set();
-  
-  // Combine both arrays
-  const allDepartures = [...motByen, ...fraByen];
+  const allDepartures = departureGroups.flat();
 
   allDepartures.forEach(departure => {
     if (departure.avvik && departure.avvik.length > 0) {
       departure.avvik.forEach(problem => {
         if (!processedSituationNumbers.has(problem.situationNumber)) {
           processedSituationNumbers.add(problem.situationNumber);
-          
-          // Prioritize Summary, then Description
           const summary = problem.summary.find(s => s.language === "no");
           const description = problem.description.find(d => d.language === "no");
 
@@ -31,4 +27,3 @@ export function handleSituations(motByen, fraByen) {
     return "Ingen større avvik";
   }
 }
-

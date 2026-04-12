@@ -2,23 +2,26 @@ import dateformat from "dateformat";
 import config from "../config";
 
 export function behandleRutetider(data) {
-  const motByen = [];
-  const fraByen = [];
+  const departures = {
+    line70National: [],
+    line78Ostensjo: [],
+    line79Asbraten: [],
+    line79Grorud: [],
+  };
 
-  const { quayId, lines } = config.ruter;
+  const { lines, quays } = config.ruter;
 
   data.forEach((element) => {
-    // Only process buses
     if (element.serviceJourney.journeyPattern.line.transportMode !== "bus") {
       return;
     }
 
     const aimedTime = dateformat(element.aimedDepartureTime, "HH:MM");
     const expectedTime = dateformat(element.expectedDepartureTime, "HH:MM");
-    
-    // Check if line 3969 (prefix E)
-    const isLine3969 = element.serviceJourney.journeyPattern.line.id === lines.line3969;
-    
+    const lineId = element.serviceJourney.journeyPattern.line.id;
+    const quayId = element.quay.id;
+    const isLine3969 = lineId === lines.line3969;
+
     const avgang = isLine3969 
       ? [`E${aimedTime}`, `E${expectedTime}`]
       : [aimedTime, expectedTime];
@@ -32,22 +35,24 @@ export function behandleRutetider(data) {
       forsinket,
       kansellert,
       avvik,
-      lineId: element.serviceJourney.journeyPattern.line.id
+      lineId,
     };
 
-    // Filter by Quay ID (though query already filters, good for safety)
-    if (element.quay.id !== quayId) return;
-
-    // Grouping logic
-    if (element.serviceJourney.journeyPattern.line.id === lines.line70 || isLine3969) {
-      motByen.push(departureObj);
-    } else if (element.serviceJourney.journeyPattern.line.id === lines.line78) {
-      fraByen.push(departureObj);
+    if ((lineId === lines.line70 || isLine3969) && quayId === quays.line70National) {
+      departures.line70National.push(departureObj);
+    } else if (lineId === lines.line78 && quayId === quays.line78Ostensjo) {
+      departures.line78Ostensjo.push(departureObj);
+    } else if (lineId === lines.line79 && quayId === quays.line79Asbraten) {
+      departures.line79Asbraten.push(departureObj);
+    } else if (lineId === lines.line79 && quayId === quays.line79Grorud) {
+      departures.line79Grorud.push(departureObj);
     }
   });
 
   return {
-    fraByen: fraByen.slice(0, 5),
-    motByen: motByen.slice(0, 5)
+    line70National: departures.line70National.slice(0, 5),
+    line78Ostensjo: departures.line78Ostensjo.slice(0, 5),
+    line79Asbraten: departures.line79Asbraten.slice(0, 5),
+    line79Grorud: departures.line79Grorud.slice(0, 5),
   };
 }

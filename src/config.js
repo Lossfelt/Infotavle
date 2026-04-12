@@ -4,7 +4,7 @@ const config = {
         clientName: "lossfelt-tavle",
     },
     ruter: {
-        quayId: "NSR:Quay:10920",
+        stopPlaceId: "NSR:StopPlace:5953",
         query: {
             timeRange: 72100,
             numberOfDepartures: 10,
@@ -13,7 +13,14 @@ const config = {
         lines: {
             line70: "RUT:Line:70",
             line78: "RUT:Line:78",
+            line79: "RUT:Line:79",
             line3969: "RUT:Line:3969",
+        },
+        quays: {
+            line70National: "NSR:Quay:10920",
+            line78Ostensjo: "NSR:Quay:10920",
+            line79Asbraten: "NSR:Quay:10917",
+            line79Grorud: "NSR:Quay:10919",
         },
     },
     urls: {
@@ -22,6 +29,9 @@ const config = {
     },
     strom: {
         zone: "NO1",
+    },
+    ui: {
+        showStrompriser: false,
     },
     refetchIntervals: {
         rutetider: 60 * 1000 * 5, // 5 minutter
