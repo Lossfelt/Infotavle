@@ -81,7 +81,7 @@ const Rutetider = () => {
 
   return (
     <div className="bg-zinc-900 h-full w-full flex flex-col p-2 text-white">
-       <div className="flex min-h-20 shrink-0 items-center gap-6 px-4 py-2">
+       <div className="flex h-16 shrink-0 items-center gap-4 px-4">
           <div className="pl-6 md:pl-10 lg:pl-14">
             <Clock className="shrink-0" />
           </div>

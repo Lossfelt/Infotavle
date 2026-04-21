@@ -61,8 +61,8 @@ const EnvironmentStatus = () => {
 
   return (
     <div className="flex min-w-0 items-center justify-end gap-2">
-      <div className="flex min-w-[12rem] items-center gap-2 rounded-lg border border-amber-400/30 bg-zinc-800 px-3 py-2">
-        <SunMedium className="h-6 w-6 shrink-0 text-amber-300" />
+      <div className="flex min-w-[11rem] items-center gap-2 rounded-lg border border-amber-400/30 bg-zinc-800 px-3 py-1">
+        <SunMedium className="h-[1.35rem] w-[1.35rem] shrink-0 text-amber-300" />
 
         {isLoadingUv && !uvStatus ? (
           <Loader2 className="h-4 w-4 animate-spin text-zinc-300" />
@@ -70,7 +70,7 @@ const EnvironmentStatus = () => {
           <span className="text-xs font-medium text-zinc-400">UV utilgjengelig</span>
         ) : (
           <div className="leading-tight">
-            <div className="flex flex-wrap items-center gap-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-amber-200">
+            <div className="flex flex-wrap items-center gap-1 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-amber-200">
               <span>UV</span>
               <span className="text-zinc-400">lav 0-2</span>
               <span className="text-zinc-500">|</span>
@@ -78,9 +78,9 @@ const EnvironmentStatus = () => {
               <span className="text-zinc-500">|</span>
               <span className="text-zinc-400">høy 6+</span>
             </div>
-            <div className="text-sm font-semibold text-white">
+            <div className="text-xs font-semibold text-white">
               Nå {uvStatus.current.toFixed(1)}
-              <span className="ml-2 text-xs font-medium text-zinc-300">
+              <span className="ml-2 text-[0.65rem] font-medium text-zinc-300">
                 maks {uvStatus.max.toFixed(1)} kl {formatOsloHour(new Date(uvStatus.maxTime))}
               </span>
             </div>
@@ -88,7 +88,7 @@ const EnvironmentStatus = () => {
         )}
       </div>
 
-      <div className="flex min-w-0 items-center gap-2 rounded-lg border border-emerald-400/20 bg-zinc-800 px-3 py-2">
+      <div className="flex min-w-0 items-center gap-2 rounded-lg border border-emerald-400/20 bg-zinc-800 px-3 py-1">
         <Leaf className="h-5 w-5 shrink-0 text-emerald-300" />
 
         <div className="flex min-w-0 flex-wrap items-center gap-1.5">
