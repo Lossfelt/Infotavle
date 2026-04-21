@@ -45,7 +45,7 @@ export const getPollenBadgeClasses = (level) => {
     case 2:
       return "border-yellow-400/60 bg-yellow-400/20 text-yellow-100";
     case 3:
-      return "border-red-400/60 bg-red-400/20 text-red-100";
+      return "border-red-500/80 bg-red-600/35 text-red-50";
     default:
       return "border-zinc-600 bg-zinc-700/60 text-zinc-200";
   }

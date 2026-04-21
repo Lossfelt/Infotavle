@@ -60,7 +60,7 @@ const EnvironmentStatus = () => {
   });
 
   return (
-    <div className="flex min-w-0 flex-1 flex-wrap items-center justify-end gap-2">
+    <div className="flex min-w-0 items-center justify-end gap-2">
       <div className="flex min-w-[12rem] items-center gap-2 rounded-lg border border-amber-400/30 bg-zinc-800 px-3 py-2">
         <SunMedium className="h-6 w-6 shrink-0 text-amber-300" />
 
