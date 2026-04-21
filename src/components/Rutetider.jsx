@@ -3,6 +3,7 @@ import { GraphQLClient } from "graphql-request";
 import Clock from "./Clock";
 import Strompriser from "./Strompriser";
 import PresenterAvganger from "./PresenterAvganger";
+import EnvironmentStatus from "./EnvironmentStatus";
 import { definerQuery } from "../utils/funcQuery";
 import { behandleRutetider } from "../utils/funcRutetider";
 import { handleSituations } from "../utils/funcHandleSituations";
@@ -80,8 +81,12 @@ const Rutetider = () => {
 
   return (
     <div className="bg-zinc-900 h-full w-full flex flex-col p-2 text-white">
-       <div className="flex justify-center items-center h-16 shrink-0">
-          <Clock />
+       <div className="flex min-h-20 shrink-0 items-center gap-4 px-4 py-2">
+          <div className="flex-1" />
+          <Clock className="shrink-0" />
+          <div className="flex min-w-0 flex-1 justify-end">
+            <EnvironmentStatus />
+          </div>
        </div>
 
        <div className={gridClassName}>

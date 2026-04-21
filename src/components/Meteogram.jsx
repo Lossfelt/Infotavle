@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import config from "../config";
 
 const Meteogram = ({ onClick }) => {
-  const [refreshKey, setRefreshKey] = useState(Date.now());
+  const [refreshKey, setRefreshKey] = useState(() => Date.now());
 
   useEffect(() => {
     const interval = setInterval(() => {

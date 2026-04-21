@@ -1,4 +1,10 @@
 const config = {
+    location: {
+        name: "Oslo",
+        latitude: 59.9139,
+        longitude: 10.7522,
+        pollenRegionId: "ostlandetMedOslo",
+    },
     api: {
         enturGraphQl: "https://api.entur.io/journey-planner/v3/graphql",
         clientName: "lossfelt-tavle",
@@ -25,6 +31,7 @@ const config = {
     },
     urls: {
         yrMeteogram: "https://www.yr.no/nb/innhold/1-72837/meteogram.svg",
+        metForecast: "https://api.met.no/weatherapi/locationforecast/2.0/complete",
         stromprisApi: "https://www.hvakosterstrommen.no/api/v1/prices",
     },
     strom: {
@@ -37,6 +44,8 @@ const config = {
         rutetider: 60 * 1000 * 5, // 5 minutter
         strompriser: 1000 * 60 * 60, // 1 time
         meteogram: 1000 * 60 * 60, // 1 time
+        uv: 1000 * 60 * 30, // 30 minutter
+        pollen: 1000 * 60 * 60 * 6, // 6 timer
     }
 };
 

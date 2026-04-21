@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const Clock = () => {
+const Clock = ({ className = "" }) => {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -10,7 +10,11 @@ const Clock = () => {
     return () => clearInterval(timer);
   }, []);
 
-  return <div className="text-6xl font-bold text-white mb-2">{time.toLocaleTimeString("no-NO")}</div>;
+  return (
+    <div className={`text-5xl font-bold text-white ${className}`.trim()}>
+      {time.toLocaleTimeString("no-NO")}
+    </div>
+  );
 };
 
 export default Clock;
