@@ -41,11 +41,11 @@ export const getPollenLevelText = (level) => POLLEN_LEVELS[level] ?? "Ukjent";
 export const getPollenBadgeClasses = (level) => {
   switch (level) {
     case 1:
-      return "border-emerald-400/60 bg-emerald-500/20 text-emerald-100";
+      return "border-emerald-300 bg-emerald-500 text-white";
     case 2:
-      return "border-yellow-400/60 bg-yellow-400/20 text-yellow-100";
+      return "border-yellow-300 bg-yellow-400 text-zinc-950";
     case 3:
-      return "border-red-500/80 bg-red-600/35 text-red-50";
+      return "border-red-300 bg-red-500 text-white";
     default:
       return "border-zinc-600 bg-zinc-700/60 text-zinc-200";
   }
