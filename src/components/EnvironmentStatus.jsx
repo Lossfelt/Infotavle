@@ -61,7 +61,7 @@ const EnvironmentStatus = () => {
 
   return (
     <div className="flex min-w-0 items-center justify-end gap-2">
-      <div className="flex min-w-[11rem] items-center gap-2 rounded-lg border border-amber-400/30 bg-zinc-800 px-3 py-1">
+      <div className="flex min-w-44 items-center gap-2 rounded-lg border border-amber-400/30 bg-zinc-800 px-3 py-1">
         <SunMedium className="h-[1.35rem] w-[1.35rem] shrink-0 text-amber-300" />
 
         {isLoadingUv && !uvStatus ? (
@@ -80,7 +80,7 @@ const EnvironmentStatus = () => {
             </div>
             <div className="text-xs font-semibold text-white">
               Nå {uvStatus.current.toFixed(1)}
-              <span className="ml-2 text-[0.65rem] font-medium text-zinc-300">
+              <span className="ml-2 text-[0.65rem] leading-4 font-medium text-zinc-300">
                 maks {uvStatus.max.toFixed(1)} kl {formatOsloHour(new Date(uvStatus.maxTime))}
               </span>
             </div>
