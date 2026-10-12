@@ -12,7 +12,7 @@ const PresenterAvganger = ({ avganger }) => {
         <div
           key={element ? `${element.lineId}-${index}` : `empty-${index}`}
           className={clsx(
-            "flex min-h-0 w-full items-center justify-center text-center text-lg md:text-xl lg:text-2xl font-bold leading-none",
+            "flex min-h-0 w-full items-center justify-center text-center text-lg md:text-xl lg:text-2xl font-bold leading-none md:leading-7 lg:leading-8",
             element?.forsinket && "text-red-500",
             element?.kansellert && "opacity-50"
           )}

@@ -13,7 +13,7 @@ const Meteogram = ({ onClick }) => {
   }, []);
 
   return (
-    <button onClick={onClick} className="w-full h-full cursor-pointer focus:outline-none block">
+    <button onClick={onClick} className="w-full h-full cursor-pointer focus:outline-hidden block">
       <img
         key={refreshKey}
         src={`${config.urls.yrMeteogram}?t=${refreshKey}`}

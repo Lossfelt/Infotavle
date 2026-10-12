@@ -66,7 +66,7 @@ const Rutetider = () => {
     : "grid grid-cols-[0.9fr_0.9fr_0.9fr_0.9fr_1.35fr] grid-rows-[auto_1fr] gap-2 h-full overflow-hidden pb-2";
 
   const renderDeparturePanel = (avganger) => (
-    <div className="bg-zinc-800 p-2 rounded text-center flex h-full flex-col justify-start overflow-hidden relative">
+    <div className="bg-zinc-800 p-2 rounded-sm text-center flex h-full flex-col justify-start overflow-hidden relative">
       {isLoading && !data && (
         <div className="absolute inset-0 flex items-center justify-center bg-zinc-800/80">
           <Loader2 className="animate-spin w-8 h-8 text-white" />
@@ -94,18 +94,18 @@ const Rutetider = () => {
           {departureColumns.map((column) => (
             <div
               key={column.title}
-              className="bg-zinc-800 p-2 rounded text-center font-bold text-lg md:text-xl flex items-center justify-center"
+              className="bg-zinc-800 p-2 rounded-sm text-center font-bold text-lg md:text-xl flex items-center justify-center"
             >
               {column.title}
             </div>
           ))}
 
-          <div className="bg-zinc-800 p-2 rounded text-center font-bold text-lg md:text-xl flex items-center justify-center">
+          <div className="bg-zinc-800 p-2 rounded-sm text-center font-bold text-lg md:text-xl flex items-center justify-center">
             Avvik
           </div>
 
           {showStrompriser && (
-            <div className="bg-zinc-800 p-2 rounded row-span-2 relative flex flex-col">
+            <div className="bg-zinc-800 p-2 rounded-sm row-span-2 relative flex flex-col">
               <Strompriser />
             </div>
           )}
@@ -116,7 +116,7 @@ const Rutetider = () => {
             </div>
           ))}
 
-          <div className="bg-zinc-800 p-2 rounded text-center overflow-auto text-sm text-red-200 whitespace-pre-line font-medium">
+          <div className="bg-zinc-800 p-2 rounded-sm text-center overflow-auto text-sm text-red-200 whitespace-pre-line font-medium">
              {situations}
           </div>
        </div>
